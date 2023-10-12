@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement } from './counterSlice';
+import './Counter.css'; // Import the CSS file
+import {
+  incrementCustomer,
+  decrementCustomer,
+  incrementValueCustomer,
+  decrementValueCustomer,
+} from './counterSlice';
 
 export default function Counter() {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
+  const [amount, setAmount] = useState(1);
+
+  const handleValueIncrement = () => {
+    dispatch(incrementValueCustomer(amount));
+  };
+  const handleValueDecrement = () => {
+    dispatch(decrementValueCustomer(amount));
+  }
 
   return (
-    <div>
-      <button onClick={() => dispatch(increment())}>Increment</button> {/* Pass the function for increment */}
-      <span>{count}</span>
-      <button onClick={() => dispatch(decrement())}>Decrement</button> {/* Pass the function for decrement */}
+    <div className="container">
+      <button className="button" onClick={handleValueIncrement}>Customervalue Arrived</button>
+      <input
+        type="number"
+        value={amount}
+        onChange={(e) => setAmount(parseInt(e.target.value))}
+        className="input"
+      />
+      <button className="button" onClick={handleValueDecrement}>Customervalue Gone</button>
+      <button className="button" onClick={() => dispatch(incrementCustomer())}>Customer Arrived</button>
+      <span className="value">{count}</span>
+      <button className="button" onClick={() => dispatch(decrementCustomer())}>Customer Gone</button>
     </div>
   );
 }
