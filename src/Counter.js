@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement } from './counterSlice';
+import { incrementCustomer, decrementCustomer } from './counterSlice';
 
 export default function Counter() {
   const count = useSelector((state) => state.counter.value);
@@ -8,9 +8,9 @@ export default function Counter() {
 
   return (
     <div>
-      <button onClick={() => dispatch(increment())}>Increment</button> {/* Pass the function for increment */}
-      <span>{count}</span>
-      <button onClick={() => dispatch(decrement())}>Decrement</button> {/* Pass the function for decrement */}
+      <button onClick={() => dispatch(incrementCustomer())}>Customer Arrived</button>
+      <span>&nbsp;{ count }&nbsp;</span>
+      <button onClick={() => dispatch(decrementCustomer())}>Custore Gone</button> 
     </div>
   );
 }

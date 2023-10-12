@@ -1,13 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const counterSlice = createSlice({
-  name: 'counter',
-  initialState: { value: 0 }, // Correct the typo here
+  name: 'customer',
+  initialState: { value: 0 },
   reducers: {
-    increment: (state) => {state.value += 1; },
-    decrement: (state) => {state.value -= 1; },
+    incrementCustomer: (state) => {
+      state.value += 1;
+    },
+    decrementCustomer: (state) => {
+      state.value -= 1;
+    },
   },
 });
 
-export const { increment, decrement } = counterSlice.actions;
+export const { incrementCustomer, decrementCustomer } = counterSlice.actions;
 export default counterSlice.reducer;
