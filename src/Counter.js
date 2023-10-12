@@ -6,6 +6,7 @@ import {
   decrementCustomer,
   incrementValueCustomer,
   decrementValueCustomer,
+  resetCustomerCount, // Add the reset action
 } from './counterSlice';
 
 export default function Counter() {
@@ -20,6 +21,10 @@ export default function Counter() {
     dispatch(decrementValueCustomer(amount));
   }
 
+  const handleReset = () => {
+    dispatch(resetCustomerCount());
+  };
+
   return (
     <div className="container">
       <button className="button" onClick={handleValueIncrement}>Customervalue Arrived</button>
@@ -33,6 +38,8 @@ export default function Counter() {
       <button className="button" onClick={() => dispatch(incrementCustomer())}>Customer Arrived</button>
       <span className="value">{count}</span>
       <button className="button" onClick={() => dispatch(decrementCustomer())}>Customer Gone</button>
+      <br></br>
+      <button className="button reset-button" onClick={handleReset}>Reset Count</button>
     </div>
   );
 }
